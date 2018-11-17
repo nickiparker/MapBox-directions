@@ -29,7 +29,7 @@
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
       center: [-84.5125, 39.1015],
-      zoom: 14
+      zoom: 13
     });
     // Add route to the map
     map.on('load', function() {
@@ -59,7 +59,36 @@
             'line-width': 2
           }
         });
-        // this is where the code from the next step will go
+        // Add origin and destination
+        map.addLayer({
+        id: 'start',
+        type: 'circle',
+        source: {
+          type: 'geojson',
+          data: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: start
+            }
+          }
+        }
+      });
+      map.addLayer({
+        id: 'end',
+        type: 'circle',
+        source: {
+          type: 'geojson',
+          data: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: end
+            }
+          }
+        }
+      });
+      // this is where the JavaScript from the next step will go
       });
     }
     </script>
